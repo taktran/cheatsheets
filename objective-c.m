@@ -91,8 +91,12 @@ static void staticMethod(int someInt) {
 
 
 
-// Private methods
-@interface SomeClass()
+// Private interface
+@interface SomeClass() {
+
+int num;
+    
+}
 
 - (NSString *)someMethod;
 
