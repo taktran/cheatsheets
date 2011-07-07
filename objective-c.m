@@ -49,3 +49,13 @@ Cheatsheet for objective c code.
 	
 	return instanceName;
 }
+
+#pragma mark -
+#pragma mark === Debugging  ===
+#pragma mark
+
+// Recursively check subviews [http://stackoverflow.com/questions/5150186/how-do-i-inspect-the-view-hierarchy-in-ios/5150281#5150281]
+po [[UIWindow keyWindow] recursiveDescription];
+
+// Print to console
+NSLog(@"Debug message");
