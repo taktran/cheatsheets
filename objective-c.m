@@ -10,7 +10,7 @@ Cheatsheet for objective c code.
 #pragma mark === Constants ===
 #pragma mark
 
-#define kSomeContstant	30
+#define kSomeContstant  30
 
 
 #pragma mark -
@@ -29,20 +29,20 @@ static void staticMethod(int someInt) {
 {
     self = [super init];
     if (self) {
-		// Custom initialization
-	}
+        // Custom initialization
+    }
 
-	return self;
+    return self;
 }
 
 - (id)initWithInteger:(int)i
 {
-	self = [super init];
-	if (self) {
-		[self setInteger:i];
-	}
-	
-	return self;
+    self = [super init];
+    if (self) {
+        [self setInteger:i];
+    }
+    
+    return self;
 }
 
 
@@ -60,11 +60,11 @@ static void staticMethod(int someInt) {
 #pragma mark
 
 - (SomeClass *)instanceName {
-	if (!instanceName) {
-		instanceName = [[SomeClass alloc] init];
-	}
-	
-	return instanceName;
+    if (!instanceName) {
+        instanceName = [[SomeClass alloc] init];
+    }
+    
+    return instanceName;
 }
 
 #pragma mark -
@@ -73,8 +73,8 @@ static void staticMethod(int someInt) {
 
 // Interface
 @interface SomeClass : ParentClass <ProtocolClass> {
-	UIView *view;
-	UILabel *label;
+    UIView *view;
+    UILabel *label;
 }
 
 - (void)someMethod;
@@ -101,7 +101,7 @@ static void staticMethod(int someInt) {
 @synthesize view, label;
 
 - (void)someMethod {
-	// Implementation
+    // Implementation
 }
 
 @end
