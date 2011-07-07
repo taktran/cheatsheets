@@ -109,7 +109,24 @@ static void staticMethod(int someInt) {
 
 @end
 
+#pragma mark -
+#pragma mark === NSArray/NSMutableArray ===
+#pragma mark
 
+// Autoreleased
+NSArray *emptyArray = [NSArray array];
+NSArray *arrayWithArray = [NSArray arrayWithArray:someArray];
+NSArray *arrayWithObject = [NSArray arrayWithObject:@"one"];
+NSArray *arrayWithObjects = [NSArray arrayWithObjects:@"one", @"two", @"three", nil];
+
+// Need to memory manage
+NSArray *emptyArray = [NSArray initWithArray:someArray];
+// ...
+
+
+NSMutableArray *mutableArray = [NSMutableArray initWithCapacity:5];
+[mutableArray insertObject:@"one" atIndex:0];
+[mutableArray addObject:@"one"];
 
 #pragma mark -
 #pragma mark === Debugging ===
