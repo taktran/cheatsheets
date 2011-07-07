@@ -4,8 +4,25 @@ Cheatsheet for objective c code.
 
 */
 
+#import "SomeFile.h"
+
 #pragma mark -
-#pragma mark === Contructors  ===
+#pragma mark === Constants ===
+#pragma mark
+
+#define kSomeContstant	30
+
+
+#pragma mark -
+#pragma mark === Static methods ===
+#pragma mark
+
+static void staticMethod(int someInt) {
+
+}
+
+#pragma mark -
+#pragma mark === Contructors ===
 #pragma mark
 
 - (id)init
@@ -39,7 +56,7 @@ Cheatsheet for objective c code.
 }
 
 #pragma mark -
-#pragma mark === Setter/Getter methods  ===
+#pragma mark === Setter/Getter methods ===
 #pragma mark
 
 - (SomeClass *)instanceName {
@@ -51,7 +68,48 @@ Cheatsheet for objective c code.
 }
 
 #pragma mark -
-#pragma mark === Debugging  ===
+#pragma mark === Class definition ===
+#pragma mark
+
+// Interface
+@interface SomeClass : ParentClass <ProtocolClass> {
+	UIView *view;
+	UILabel *label;
+}
+
+- (void)someMethod;
+
+// To connect in interface builder
+@property (nonatomic, retain) IBOutlet UIView *view;
+// Normal property
+@property (nonatomic, retain) UILabel *label;
+
+@end
+
+
+
+// Private methods
+@interface SomeClass()
+
+- (NSString *)someMethod;
+
+@end
+
+// Implementation
+@implementation SomeClass
+
+@synthesize view, label;
+
+- (void)someMethod {
+	// Implementation
+}
+
+@end
+
+
+
+#pragma mark -
+#pragma mark === Debugging ===
 #pragma mark
 
 // Recursively check subviews [http://stackoverflow.com/questions/5150186/how-do-i-inspect-the-view-hierarchy-in-ios/5150281#5150281]
