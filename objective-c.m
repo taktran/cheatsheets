@@ -119,4 +119,4 @@ static void staticMethod(int someInt) {
 po [[UIWindow keyWindow] recursiveDescription];
 
 // Print to console
-NSLog(@"Debug message");
+NSLog(@"Debug message: %@", someString);
