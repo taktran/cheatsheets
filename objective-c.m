@@ -10,7 +10,7 @@ Cheatsheet for objective c code.
 #pragma mark === Constants ===
 #pragma mark
 
-#define kSomeContstant  30
+#define kSomeConstant  30
 
 
 #pragma mark -
