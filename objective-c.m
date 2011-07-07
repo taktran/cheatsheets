@@ -75,6 +75,9 @@ static void staticMethod(int someInt) {
 @interface SomeClass : ParentClass <ProtocolClass> {
     UIView *view;
     UILabel *label;
+    
+@private
+    NSString *privateString;
 }
 
 - (void)someMethod;
