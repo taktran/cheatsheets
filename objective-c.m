@@ -110,6 +110,15 @@ static void staticMethod(int someInt) {
 @end
 
 #pragma mark -
+#pragma mark === UIImage ===
+#pragma mark
+
+UIImage *image = [UIImage imageNamed:@"image.jpg"];
+
+NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://www.something.com/image.jpg"]]; 
+UIImage *imageFromData = [UIImage imageWithData:imageData];
+
+#pragma mark -
 #pragma mark === NSArray/NSMutableArray ===
 #pragma mark
 
