@@ -132,6 +132,8 @@ NSArray *arrayWithObjects = [NSArray arrayWithObjects:@"one", @"two", @"three", 
 NSArray *emptyArray = [[NSArray alloc] initWithArray:someArray];
 // ...
 
+[emptyArray count] // Number of elements
+
 
 NSMutableArray *mutableArray = [NSMutableArray initWithCapacity:5];
 [mutableArray insertObject:@"one" atIndex:0];
