@@ -12,6 +12,16 @@ Cheatsheet for objective c code.
 
 #define kSomeConstant  30
 
+// iPhone dimensions
+#define kIPhoneWidth 320
+#define kIPhoneHeight 480
+
+#define kIPadWidth 640
+#define kIPadHeight 960
+
+#define kStatusBarHeight 20
+#define kTopNavHeight 44
+#define kTabBarHeight 49
 
 #pragma mark -
 #pragma mark === Static methods ===
