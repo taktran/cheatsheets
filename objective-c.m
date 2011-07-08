@@ -175,6 +175,38 @@ NSData *dataJSON = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
 
 int ri = arc4random() % maxNum;
 
+
+#pragma mark -
+#pragma mark === Gestures ===
+#pragma mark
+
+
+// Inside view controller
+{
+    - (void) viewDidAppear:(BOOL)animated {
+        // To handle gestures
+        [self becomeFirstResponder];
+    }
+
+    - (void) viewWillDisappear:(BOOL)animated {
+        [self resignFirstResponder];
+        [super viewWillDisappear:animated];
+    }
+    
+    - (BOOL)canBecomeFirstResponder { 
+        return YES; 
+    }
+
+    - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+        if (event.subtype == UIEventSubtypeMotionShake) {
+            // Code to handle shake
+        }
+
+        if ( [super respondsToSelector:@selector(motionEnded:withEvent:)] )
+            [super motionEnded:motion withEvent:event];
+    }
+
+}
 #pragma mark -
 #pragma mark === Debugging ===
 #pragma mark
