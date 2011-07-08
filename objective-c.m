@@ -181,7 +181,8 @@ int ri = arc4random() % maxNum;
 #pragma mark
 
 
-// Inside view controller
+// For iOS3.0+ (also see http://stackoverflow.com/questions/150446/how-do-i-detect-when-someone-shakes-an-iphone/1111983)
+// Put inside view controller
 {
     - (void) viewDidAppear:(BOOL)animated {
         // To handle gestures
