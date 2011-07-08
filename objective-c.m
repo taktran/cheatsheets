@@ -129,6 +129,15 @@ NSMutableArray *mutableArray = [NSMutableArray initWithCapacity:5];
 [mutableArray addObject:@"one"];
 
 #pragma mark -
+#pragma mark === NSDictionary/NSMutableDictionary ===
+#pragma mark
+
+NSDictionary *dictionary = [NSDictionary dictionary];
+[dictionary allKeys];
+[dictionary allValues];
+[dictionary objectForKey:@"key"];
+
+#pragma mark -
 #pragma mark === UIView/UIViewController ===
 #pragma mark
 
