@@ -141,6 +141,15 @@ vc.title; // Title used in navigation controllers
 view.frame = CGRectMake(x, y, view.frame.size.width, view.frame.size.height);
 
 #pragma mark -
+#pragma mark === Downloading data ===
+#pragma mark
+
+NSString *url = @"http://somesite.com/data.json";
+NSData *dataJSON = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+
+// Also see: http://allseeing-i.com/ASIHTTPRequest/How-to-use
+
+#pragma mark -
 #pragma mark === Random numbers ===
 #pragma mark
 
