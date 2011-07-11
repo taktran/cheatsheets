@@ -212,6 +212,22 @@ vc.title; // Title used in navigation controllers
 [vc.view addSubview:view];
 view.frame = CGRectMake(x, y, view.frame.size.width, view.frame.size.height);
 
+// Animations
+
+[UIView animateWithDuration:kAnimationDuration
+     // The end result of the animation
+     animations:^{
+         // Shrink
+         someView.frame = CGRectMake(someView.frame.origin.x, someView.frame.origin.y, 0, 0);
+         imageView.alpha = 0;
+     }
+ 
+     // Done upon completion of animation
+     completion:^(BOOL finished) {
+         [someView removeFromSuperview];
+     }
+ ];
+
 #pragma mark -
 #pragma mark === Downloading data ===
 #pragma mark
