@@ -119,6 +119,48 @@ static void staticMethod(int someInt) {
 
 @end
 
+
+#pragma mark -
+#pragma mark === UINavigation ===
+#pragma mark
+
+UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPress)];
+self.navigationItem.rightBarButtonItem = editButton;
+[editButton release];
+
+UIBarButtonItem
+– initWithBarButtonSystemItem:target:action:
+– initWithCustomView:
+– initWithImage:style:target:action:
+– initWithTitle:style:target:action:
+
+typedef enum {
+   UIBarButtonSystemItemDone,
+   UIBarButtonSystemItemCancel,
+   UIBarButtonSystemItemEdit,
+   UIBarButtonSystemItemSave,
+   UIBarButtonSystemItemAdd,
+   UIBarButtonSystemItemFlexibleSpace,
+   UIBarButtonSystemItemFixedSpace,
+   UIBarButtonSystemItemCompose,
+   UIBarButtonSystemItemReply,
+   UIBarButtonSystemItemAction,
+   UIBarButtonSystemItemOrganize,
+   UIBarButtonSystemItemBookmarks,
+   UIBarButtonSystemItemSearch,
+   UIBarButtonSystemItemRefresh,
+   UIBarButtonSystemItemStop,
+   UIBarButtonSystemItemCamera,
+   UIBarButtonSystemItemTrash,
+   UIBarButtonSystemItemPlay,
+   UIBarButtonSystemItemPause,
+   UIBarButtonSystemItemRewind,
+   UIBarButtonSystemItemFastForward,
+   UIBarButtonSystemItemUndo,        // iOS 3.0 and later
+   UIBarButtonSystemItemRedo,        // iOS 3.0 and later
+   UIBarButtonSystemItemPageCurl,    // iOS 4.0 and later
+} UIBarButtonSystemItem;
+
 #pragma mark -
 #pragma mark === UIImage ===
 #pragma mark
