@@ -296,6 +296,29 @@ int ri = arc4random() % maxNum;
     }
 
 }
+
+#pragma mark -
+#pragma mark === Threading ===
+#pragma mark
+
+// 1. Create the new thread:
+[NSThread detachNewThreadSelector:@selector(myMethod) toTarget:self withObject:nil];
+
+// or to run in background thread
+[self performSelectorInBackground:@selector(myMethod) withObject:nil];
+
+// 2. Create the method that is called by the new thread:
+
+- (void)myMethod 
+{ 
+   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; 
+   // Thread code here
+   [pool release]; 
+}
+
+// If you need to do something to the main thread from inside your new thread
+[self performSelectorOnMainThread:@selector(myMethod) withObject:nil waitUntilDone:NO];
+
 #pragma mark -
 #pragma mark === Debugging ===
 #pragma mark
