@@ -162,6 +162,15 @@ typedef enum {
 } UIBarButtonSystemItem;
 
 #pragma mark -
+#pragma mark === UILabel ===
+#pragma mark
+
+int i = 4;
+UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+label.text = [NSString stringWithFormat:@"%d", i];
+[superView addSubview:label];
+
+#pragma mark -
 #pragma mark === UIImage ===
 #pragma mark
 
