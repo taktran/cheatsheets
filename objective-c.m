@@ -237,6 +237,14 @@ view.frame = CGRectMake(x, y, view.frame.size.width, view.frame.size.height);
      }
  ];
 
+// From http://iphonedevelopment.blogspot.com/2008/10/demystifying-cgaffinetransform.html
+theView.transform = CGAffineTransformIdentity;
+theView.transform = CGAffineTransformTranslate(theView.transform, 5.0, 10.0);
+theView.transform = CGAffineTransformRotate(theView.transform, degreesToRadians(45)); // May need to #define degreesToRadians(x) (M_PI * x / 180.0)
+theView.transform = CGAffineTransformScale(theView.transform, 2.0, 2.0);
+// Inverting transformations 
+CGAffineTransform inverse = CGAffineTransformInvert(CGAffineTransformMakeTranslation(5.0, 5.0));
+
 #pragma mark -
 #pragma mark === Downloading data ===
 #pragma mark
