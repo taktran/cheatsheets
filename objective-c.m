@@ -119,6 +119,9 @@ static void staticMethod(int someInt) {
 
 @end
 
+// Check class type of an instance
+[myObject class] == [MyClass class];
+[myObject isKindOfClass:[AnObject class]];
 
 #pragma mark -
 #pragma mark === UINavigation ===
