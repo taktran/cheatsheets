@@ -319,6 +319,9 @@ int ri = arc4random() % maxNum;
 // If you need to do something to the main thread from inside your new thread
 [self performSelectorOnMainThread:@selector(myMethod) withObject:nil waitUntilDone:NO];
 
+// Sleep
+[NSThread sleepForTimeInterval:1]; // 1 second
+
 #pragma mark -
 #pragma mark === Debugging ===
 #pragma mark
