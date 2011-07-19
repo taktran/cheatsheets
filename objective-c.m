@@ -66,6 +66,16 @@ static void staticMethod(int someInt) {
 }
 
 #pragma mark -
+#pragma mark === Decontructors ===
+#pragma mark
+
+- (void)dealloc
+{
+    [something release];
+    [super dealloc];
+}
+
+#pragma mark -
 #pragma mark === Setter/Getter methods ===
 #pragma mark
 
