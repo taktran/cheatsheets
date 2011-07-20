@@ -174,6 +174,28 @@ typedef enum {
    UIBarButtonSystemItemPageCurl,    // iOS 4.0 and later
 } UIBarButtonSystemItem;
 
+
+// UIViewController: Add toolbar items
+- (void)configureToolbarItems
+{
+    UIBarButtonItem *flexibleSpaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    // Info button
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    [infoButton addTarget:self action:@selector(showInfo) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+
+    // Set our toolbar items
+    self.toolbarItems = [NSArray arrayWithObjects:flexibleSpaceButtonItem, infoButtonItem, nil];
+    
+    [infoButtonItem release];
+    [flexibleSpaceButtonItem release];    
+    
+    // Show toolbar animated
+    [self.navigationController setToolbarHidden:NO animated:YES];
+}
+
 #pragma mark -
 #pragma mark === UILabel ===
 #pragma mark
