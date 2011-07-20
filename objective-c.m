@@ -271,6 +271,15 @@ view.frame = CGRectMake(x, y, view.frame.size.width, view.frame.size.height);
          [someView removeFromSuperview];
      }
  ];
+ 
+// Flip animation
+// See UIViewAnimationOptions for more options
+[UIView transitionWithView:someView duration:0.7 options:UIViewAnimationOptionTransitionFlipFromLeft 
+     animations:^{
+         
+     }
+     completion:NULL
+];
 
 // From http://iphonedevelopment.blogspot.com/2008/10/demystifying-cgaffinetransform.html
 theView.transform = CGAffineTransformIdentity;
