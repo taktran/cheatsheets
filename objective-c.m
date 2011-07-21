@@ -101,8 +101,8 @@ static void staticMethod(int someInt) {
 }
 
 - (void)someMethod;
-- (NSString *)description; // String representation of the object (toString method)
-+ (void)classMethod;
+- (NSString *)description;  // String representation of the object (toString method)
++ (void)classMethod;        // Method of the class ie, call it with [SomeClass classMethod];
 
 // To connect in interface builder
 @property (nonatomic, retain) IBOutlet UIView *view;
@@ -113,10 +113,10 @@ static void staticMethod(int someInt) {
 
 
 
-// Private interface
+// Class extension (http://stackoverflow.com/questions/360968/category-usage-in-objective-c/361140#361140)
 @interface SomeClass()
 
-- (NSString *)someMethod;
+- (NSString *)somePrivateMethod;
 
 @end
 
@@ -125,8 +125,14 @@ static void staticMethod(int someInt) {
 
 @synthesize view, label;
 
-- (void)someMethod {
-    // Implementation
+- (void)someMethod 
+{
+    // someMethod implementation
+}
+
+- (NSString *)somePrivateMethod 
+{
+    
 }
 
 @end
