@@ -101,6 +101,8 @@ static void staticMethod(int someInt) {
 }
 
 - (void)someMethod;
+- (NSString *)description; // String representation of the object (toString method)
++ (void)classMethod;
 
 // To connect in interface builder
 @property (nonatomic, retain) IBOutlet UIView *view;
