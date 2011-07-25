@@ -317,6 +317,17 @@ int ri = arc4random() % maxNum;
 #pragma mark === Gestures ===
 #pragma mark
 
+// Double tap gesture
+UITapGestureRecognizer *doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapImage:)];
+doubleTapGestureRecognizer.delegate = self;
+doubleTapGestureRecognizer.numberOfTapsRequired = 2;
+[self addGestureRecognizer:doubleTapGestureRecognizer]; // Some UIView
+[doubleTapGestureRecognizer release];
+
+- (void)doubleTapImage:(UIGestureRecognizer *)gestureRecognizer
+{
+    UIView *view = [gestureRecognizer view];
+}
 
 // For iOS3.0+ (also see http://stackoverflow.com/questions/150446/how-do-i-detect-when-someone-shakes-an-iphone/1111983)
 // Put inside view controller
