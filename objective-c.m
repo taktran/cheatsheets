@@ -104,6 +104,25 @@ static void staticMethod(int someInt) {
 - (NSString *)description;  // String representation of the object (toString method)
 + (void)classMethod;        // Method of the class ie, call it with [SomeClass classMethod];
 
+
+/*
+Properties
+    Types
+        readonly - only getter, no setter
+        
+        assign   - pointer copied only
+                 - usually for delegates
+        
+        retain   - increase retain count. Remember to release!
+                 - usually for objects whose lifetime you want to guarantee
+                 
+        copy     - creates a copy, and increases retain count. Remember to release!
+                 - usually for NSStrings
+        
+    Can synthesize with 
+        @synthesize propertyName = ivarName;   // to have property and variable be different names
+*/
+
 // To connect in interface builder
 @property (nonatomic, retain) IBOutlet UIView *view;
 // Normal property
