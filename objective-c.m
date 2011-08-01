@@ -410,3 +410,22 @@ po [[UIWindow keyWindow] recursiveDescription];
 
 // Print to console
 NSLog(@"Debug message: %@", someString);
+
+
+#pragma mark -
+#pragma mark === Testing ===
+#pragma mark
+
+// OCUnit
+STAssertEquals(expression, expression, message, ...);
+STAssertEqualObjects(object, object, message, ...);
+
+STAssertNotNil(object, message, ...);
+STAssertTrue(expression, message, ...);
+STAssertFalse(expression, message, ...);
+
+STAssertThrows(expression, message, ...);
+STAssertThrowsSpecific(expression, exception, message, ...);
+STAssertNoThrow(expression, message, ...);
+
+STFail(message, ...);
