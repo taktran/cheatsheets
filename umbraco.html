@@ -1,0 +1,79 @@
+<!-- 
+Cheatsheet for umbraco (http://umbraco.com/)
+-->
+
+<asp:Content ContentPlaceHolderID="someID" runat="server">
+  <!-- Need to store all template code in here ... -->
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+  <!-- Document type property -->
+  <umbraco:Item field="bodyText" runat="server"/>
+  
+  <!-- Recursively goes up the content tree for field value  -->
+  <umbraco:Item field="bodyText" recursive="true" runat="server"/>
+  
+  <!-- Reference developer macro  -->
+  <umbraco:Macro macroAlias="topNavigation" Alias="topNavigation" runat="server" />
+  
+  
+  
+  <!-- Umbraco inline razor script -->
+  <umbraco:Macro runat="server" language="cshtml">
+    @* 
+    Multiline 
+    comment
+    *@
+    
+    @Model.Name
+    @Model.Url
+    @Model.Id
+    
+    @Model.Children
+    @Model.Children.where("Visible")
+    
+    @Model.docTypeAlias
+    @Model.AncesterOrSelf(1).Children // At level 1
+    @Model.Ancestors()
+    @Model.AncestorOrSelf(1).DescendantsOrSelf("ArticleTypeAlias").OrderBy("CreateDate desc").Take(5)
+    
+    // Subpages
+    <ul>
+      @foreach(var page in @Model.AncesterOrSelf(1).Children) {
+        <li><a href="@page.Url">@page.Name</a></li>
+      }
+    </ul>
+    
+    // Items of a node id
+    <ul>
+        @{
+          dynamic newsId = 1063;
+          dynamic newsItems = new umbraco.MacroEngines.DynamicNode(newsId);
+        }
+
+        @foreach(var item in newsItems.Children.OrderBy("CreateDate")) {
+          <li><a href="@item.Url">@item.Name</a></li>
+        }
+    </ul>
+
+    // 'NewsItem' document types
+    @{
+      dynamic newsItems = Model.AncestorOrSelf(1).DescendantsOrSelf("NewsItem").OrderBy("CreateDate desc").Take(5);
+    }
+    <ul>
+        @foreach(var item in newsItems) {
+          <li><a href="@item.Url">@item.Name</a></li>
+        }
+    </ul>
+
+    @{ var num = 10; }
+  </umbraco:Macro>
+  
+</asp:Content>
+
+<asp:ContentPlaceHolder ID="someID" runat="server"/> <!-- Reference someID content above -->
+
