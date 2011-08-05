@@ -35,17 +35,41 @@ Cheatsheet for umbraco (http://umbraco.com/)
     
     @Model.Children
     @Model.Children.where("Visible")
+    @Model.Children.Count()
     
     @Model.docTypeAlias
-    @Model.AncesterOrSelf(1).Children // At level 1
+    @{ 
+      dynamic children = Model.AncesterOrSelf(1).Children // At level 1 
+      dynamic list = Model.AncestorOrSelf(1).DescendantsOrSelf("ArticleTypeAlias").OrderBy("CreateDate desc").Take(5)
+    }
+    
     @Model.Ancestors()
-    @Model.AncestorOrSelf(1).DescendantsOrSelf("ArticleTypeAlias").OrderBy("CreateDate desc").Take(5)
+    
+    @Parameter.siteName
     
     // Subpages
+    @inherits umbraco.MacroEngines.DynamicNodeContext
+
+    @{
+        dynamic pages = Model.AncestorOrSelf(2).Children;
+    }
+
     <ul>
-      @foreach(var page in @Model.AncesterOrSelf(1).Children) {
-        <li><a href="@page.Url">@page.Name</a></li>
-      }
+        @foreach (var page in pages)
+        {      
+            <li><a href="@page.Url">@page.Name</a></li>
+
+            if (page.Children.Count() > 0)
+            {
+                dynamic subpages = page.Children;
+                <ul>
+                   @foreach (var subpage in subpages)
+                   {
+                        <li><a href="@subpage.Url">@subpage.Name</a></li>
+                   }
+                </ul>
+            }
+        }
     </ul>
     
     // Items of a node id
