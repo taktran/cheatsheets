@@ -29,6 +29,9 @@ Cheatsheet for umbraco (http://umbraco.com/)
     comment
     *@
     
+    @Html.Raw(model.Message)
+    
+    
     @Model.Name
     @Model.Url
     @Model.Id
@@ -36,6 +39,21 @@ Cheatsheet for umbraco (http://umbraco.com/)
     @Model.Children
     @Model.Children.where("Visible")
     @Model.Children.Count()
+    @Model.Children.Take(2)
+    @Model.Children.Skip(2)
+    @Model.Children.ElementAt(1)
+    
+    @Model.Children.Where("shouldBeFeatured")
+    @Model.Children.Where(item => item.shouldBeFeatured)
+    @Model.Children.Where("shouldBeFeatured == true")
+    @Model.Children.Where("catCount > 1")
+    @Model.Children.Where("menuType == \"Top Menu\ || menuType == \"Bottom Menu\"")
+    @Model.Children.Where("bodyText.Contains(\"cat\")")
+    @Model.Children.Where("bodyText.Contains(\"cat\") || !(bodyText.Contains(\"dog\"))")
+    @Model.Children.Where("Name.Contains(\"cat\") || Name.Contains(\"dog\") || Name.Contains("\fish\")")
+    
+    @Model.Children.OrderBy("catCount")
+    @Model.Children.OrderBy("catCount, colour desc")
     
     @Model.docTypeAlias
     @{ 
@@ -44,8 +62,13 @@ Cheatsheet for umbraco (http://umbraco.com/)
     }
     
     @Model.Ancestors()
+    @Model.XPath("//ChildItem[catCount > 4 and count(.//catPictures) > 0]")
     
     @Parameter.siteName
+    
+    // DynamicNodeWalker
+    Model.Down(1).Next().Down(1)
+    
     
     // Subpages
     @inherits umbraco.MacroEngines.DynamicNodeContext
@@ -53,19 +76,24 @@ Cheatsheet for umbraco (http://umbraco.com/)
     @{
         dynamic pages = Model.AncestorOrSelf(2).Children;
     }
-
-    <ul>
+    <ul id="primary_nav">
         @foreach (var page in pages)
-        {      
-            <li><a href="@page.Url">@page.Name</a></li>
+        {   
+            // Check whether it is an ancester page or the current page   
+            dynamic pageCss = ((@Model.Ancestors().Where("Id == " + page.Id).Count() > 0) ||
+                               (@Model.Id == page.Id)) ? "current" : "";
+
+            <li class="@pageCss"><a href="@page.Url">@page.Name</a></li>
 
             if (page.Children.Count() > 0)
             {
                 dynamic subpages = page.Children;
                 <ul>
-                   @foreach (var subpage in subpages)
+                   @foreach (var subpage in subpages)         
                    {
-                        <li><a href="@subpage.Url">@subpage.Name</a></li>
+                        // Check whether it is the current page
+                        dynamic subpageCss = (@Model.Id == subpage.Id) ? "current" : "";
+                        <li class="@subpageCss"><a href="@subpage.Url">@subpage.Name</a></li>
                    }
                 </ul>
             }
