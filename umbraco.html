@@ -69,6 +69,18 @@ Cheatsheet for umbraco (http://umbraco.com/)
     // DynamicNodeWalker
     Model.Down(1).Next().Down(1)
     
+    // Media
+    @VirtualPathUtility.ToAbsolute(Model.Media("some_file_attribute","umbracoFile"))
+    
+    // Strings
+    !string.IsNullOrEmpty(@someString)
+    
+    // Conditionals
+    @if (condition) {
+      
+    } else {
+      
+    }
     
     // Subpages
     @inherits umbraco.MacroEngines.DynamicNodeContext
