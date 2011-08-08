@@ -72,6 +72,19 @@ Cheatsheet for umbraco (http://umbraco.com/)
     // Media
     @VirtualPathUtility.ToAbsolute(Model.Media("some_file_attribute","umbracoFile"))
     
+    // Selecting a folder and displaying all the images in the folder
+    <umbraco:Macro runat="server" language="cshtml">
+      @* Could also try .IsNull() .HasValue() and  Model.someProperty.GetType() == typeof(DynamicNull), but they don't seem to work properly *@
+      @if (!string.IsNullOrEmpty(@Model.GetProperty("imagesFolder").Value)) {
+        <ul>
+          @foreach(var image in Model.MediaById(Model.imagesFolder).Children) {
+            <li><img src="@VirtualPathUtility.ToAbsolute(@image.umbracoFile)" title="@image.Name"/></li>
+          }   
+        </ul>
+      }
+    </umbraco:Macro>
+    
+    
     // Strings
     !string.IsNullOrEmpty(@someString)
     
