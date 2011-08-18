@@ -102,6 +102,20 @@ Special umbraco properties (see http://our.umbraco.org/wiki/reference):
       
     }
     
+    // Random
+    <umbraco:Macro runat="server" language="cshtml">
+      @{
+        int numOffers = Model.AncestorOrSelf(1).DescendantsOrSelf("SpecialOffer").Count();
+        Random random = new Random();
+        int randomIndex = random.Next(0, numOffers);
+        dynamic randomOffer = Model.AncestorOrSelf(1).DescendantsOrSelf("SpecialOffer").ElementAt(randomIndex);
+        dynamic randomOfferImage = randomOffer.Media("image", "umbracoFile");
+      }
+      <div class="block-content">
+        <a href="@randomOffer.link"><img src="@VirtualPathUtility.ToAbsolute(randomOfferImage)" alt="special offers" width="164" height="228" /></a>
+      </div>
+    </umbraco:Macro>  
+    
     // Subpages
     @inherits umbraco.MacroEngines.DynamicNodeContext
 
