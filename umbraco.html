@@ -2,6 +2,13 @@
 Cheatsheet for umbraco (http://umbraco.com/)
 -->
 
+Special umbraco properties (see http://our.umbraco.org/wiki/reference):
+- umbracoRedirect
+- umbracoUrlName
+- umbracoUrlAlias
+- umbracoInternalRedirectId
+- umbracoNaviHide
+
 <asp:Content ContentPlaceHolderID="someID" runat="server">
   <!-- Need to store all template code in here ... -->
   
@@ -130,6 +137,7 @@ Cheatsheet for umbraco (http://umbraco.com/)
         @{
           dynamic newsId = 1063;
           dynamic newsItems = new umbraco.MacroEngines.DynamicNode(newsId);
+          // Could also do Model.NodeById(newsId) - all you need is a DynamicNode to invoke NodeById
         }
 
         @foreach(var item in newsItems.Children.OrderBy("CreateDate")) {
