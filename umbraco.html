@@ -62,7 +62,7 @@ Special umbraco properties (see http://our.umbraco.org/wiki/reference):
     @Model.Children.OrderBy("catCount")
     @Model.Children.OrderBy("catCount, colour desc")
     
-    @Model.docTypeAlias
+    @Model.NodeTypeAlias
     @{ 
       dynamic children = Model.AncesterOrSelf(1).Children // At level 1 
       dynamic list = Model.AncestorOrSelf(1).DescendantsOrSelf("ArticleTypeAlias").OrderBy("CreateDate desc").Take(5)
