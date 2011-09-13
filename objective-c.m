@@ -230,6 +230,25 @@ typedef enum {
 }
 
 #pragma mark -
+#pragma mark === UIWebView ===
+#pragma mark
+
+// Adding a html file (About.html) to a webview
+- (void)viewDidLoad {
+    
+      // Load file url into webview
+     NSString *aboutFilePath = [[NSBundle mainBundle] pathForResource:@"About" ofType:@"html"];   
+     NSURL *fileUrl = [NSURL fileURLWithPath:aboutFilePath];
+     [self.aboutWebView loadRequest:[NSURLRequest requestWithURL:fileUrl]];    
+
+     self.aboutWebView.delegate = self; // Remember to add <UIWebViewDelegate> to .h file
+     // Make background transparent (see http://stackoverflow.com/questions/3646930/how-to-make-a-transparent-uiwebview/3935033#3935033)
+     self.aboutWebView.opaque = NO;
+     self.aboutWebView.backgroundColor = [UIColor clearColor];
+ 
+}
+
+#pragma mark -
 #pragma mark === UILabel ===
 #pragma mark
 
