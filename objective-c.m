@@ -223,6 +223,12 @@ typedef enum {
     [self.navigationController setToolbarHidden:NO animated:YES];
 }
 
+// Show toolbar (Note it is viewWillAppear, not viewDidLoad, so it checks everytime it is shown)
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
 #pragma mark -
 #pragma mark === UILabel ===
 #pragma mark
