@@ -2,6 +2,13 @@
 Cheatsheet for umbraco (http://umbraco.com/)
 -->
 
+Special umbraco properties (see http://our.umbraco.org/wiki/reference):
+- umbracoRedirect
+- umbracoUrlName
+- umbracoUrlAlias
+- umbracoInternalRedirectId
+- umbracoNaviHide
+
 <asp:Content ContentPlaceHolderID="someID" runat="server">
   <!-- Need to store all template code in here ... -->
   
@@ -55,7 +62,7 @@ Cheatsheet for umbraco (http://umbraco.com/)
     @Model.Children.OrderBy("catCount")
     @Model.Children.OrderBy("catCount, colour desc")
     
-    @Model.docTypeAlias
+    @Model.NodeTypeAlias
     @{ 
       dynamic children = Model.AncesterOrSelf(1).Children // At level 1 
       dynamic list = Model.AncestorOrSelf(1).DescendantsOrSelf("ArticleTypeAlias").OrderBy("CreateDate desc").Take(5)
@@ -95,6 +102,20 @@ Cheatsheet for umbraco (http://umbraco.com/)
       
     }
     
+    // Random
+    <umbraco:Macro runat="server" language="cshtml">
+      @{
+        int numOffers = Model.AncestorOrSelf(1).DescendantsOrSelf("SpecialOffer").Count();
+        Random random = new Random();
+        int randomIndex = random.Next(0, numOffers);
+        dynamic randomOffer = Model.AncestorOrSelf(1).DescendantsOrSelf("SpecialOffer").ElementAt(randomIndex);
+        dynamic randomOfferImage = randomOffer.Media("image", "umbracoFile");
+      }
+      <div class="block-content">
+        <a href="@randomOffer.link"><img src="@VirtualPathUtility.ToAbsolute(randomOfferImage)" alt="special offers" width="164" height="228" /></a>
+      </div>
+    </umbraco:Macro>  
+    
     // Subpages
     @inherits umbraco.MacroEngines.DynamicNodeContext
 
@@ -130,6 +151,7 @@ Cheatsheet for umbraco (http://umbraco.com/)
         @{
           dynamic newsId = 1063;
           dynamic newsItems = new umbraco.MacroEngines.DynamicNode(newsId);
+          // Could also do Model.NodeById(newsId) - all you need is a DynamicNode to invoke NodeById
         }
 
         @foreach(var item in newsItems.Children.OrderBy("CreateDate")) {
