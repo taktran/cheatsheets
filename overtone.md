@@ -15,12 +15,11 @@ Create saw sound
     => (foo)
     => (stop)
 
+Documentation
+
+    => (odoc definst)
+
 ## Output/Visuals
-
-To print in clojure
-
-    (print "hello")
-    (println "hello")
 
 On `overtone.live`, you can view the output of the waves with
 
@@ -62,3 +61,7 @@ Control
 OSC
 
     (osc-send _)
+
+Percussion
+
+    (doc perc)
